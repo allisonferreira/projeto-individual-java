@@ -6,19 +6,28 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/cinema")
+@RequestMapping("/cinemas")
 public class CinemaController {
+
+    private Double total=0.0;
+    private Integer inteira=0;
+    private Integer meia=0;
+    private Integer familia=0;
 
     List<Ingresso> lista = new ArrayList<>();
     List<Ingresso> lista2 = new ArrayList<>();
     List<Ingresso> lista3 = new ArrayList<>();
 
+
     @PostMapping("/inteira")
     public ResponseEntity adicionarIngresso(@RequestBody Inteira newIngresso){
 
         lista.add(newIngresso);
+        total += newIngresso.calcularValor();
+        inteira++;
         return  ResponseEntity.status(201).build();
     }
 
@@ -26,6 +35,8 @@ public class CinemaController {
     public ResponseEntity adicionarIngresso(@RequestBody MeiaEntrada newIngressso){
 
         lista2.add(newIngressso);
+        total += newIngressso.calcularValor();
+        meia++;
         return  ResponseEntity.status(201).build();
     }
 
@@ -33,22 +44,44 @@ public class CinemaController {
     public ResponseEntity adicionarIngresso(@RequestBody Familia newIngressso){
 
         lista3.add(newIngressso);
+        total += newIngressso.calcularValor();
+        familia++;
         return  ResponseEntity.status(201).build();
     }
 
     @GetMapping("/inteira")
     public ResponseEntity getInteira(){
-        return ResponseEntity.ok(lista);
+        if(lista.isEmpty()){
+            return ResponseEntity.noContent().build();
+            //return ResponseEntity.status(204).build();
+        }else{
+            return ResponseEntity.ok(lista);
+            //return ResponseEntity.status(200).body(carros);
+        }
     }
 
     @GetMapping("/meia")
     public ResponseEntity getMeia(){
-        return ResponseEntity.ok(lista2);
+        if(lista2.isEmpty()){
+            return ResponseEntity.noContent().build();
+            //return ResponseEntity.status(204).build();
+        }else{
+            return ResponseEntity.ok(lista2);
+            //return ResponseEntity.status(200).body(carros);
+        }
+
     }
 
     @GetMapping("/familia")
     public ResponseEntity getFamilia(){
-        return ResponseEntity.ok(lista3);
+        if(lista3.isEmpty()){
+            return ResponseEntity.noContent().build();
+            //return ResponseEntity.status(204).build();
+        }else{
+            return ResponseEntity.ok(lista3);
+            //return ResponseEntity.status(200).body(carros);
+        }
+
     }
 
     @DeleteMapping("/inteira/{id}")
@@ -76,6 +109,11 @@ public class CinemaController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/total")
+    public String carrinho(){
+        return "O total é de: R$"+total;
     }
 
 

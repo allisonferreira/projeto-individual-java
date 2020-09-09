@@ -2,12 +2,12 @@ package com.example.avaliacao1;
 
 public abstract  class Ingresso {
 
-    private String nomefilme;
+    private String nomeFilme;
     private Double valor;
     private Integer sala;
 
-    public Ingresso(String nomefilme, Double valor, Integer sala) {
-        this.nomefilme = nomefilme;
+    public Ingresso(String nomeFilme, Double valor, Integer sala) {
+        this.nomeFilme = nomeFilme;
         this.valor = valor;
         this.sala = sala;
     }
@@ -15,7 +15,7 @@ public abstract  class Ingresso {
     public abstract Double calcularValor();
 
     public String getNomefilme() {
-        return nomefilme;
+        return nomeFilme;
     }
 
     public Double getValor() {
@@ -28,10 +28,8 @@ public abstract  class Ingresso {
 
     @Override
     public String toString() {
-        return "Ingresso{" +
-                "nomefilme='" + nomefilme + '\'' +
-                ", valor=" + valor +
-                ", sala=" + sala +
-                '}';
+        return "Nome do filme: " + nomeFilme +
+                " | Valor ingresso: R$" + valor +
+                " | Sala: n°" + sala;
     }
 }

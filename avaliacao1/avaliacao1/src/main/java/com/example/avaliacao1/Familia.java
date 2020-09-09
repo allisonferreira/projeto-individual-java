@@ -2,28 +2,33 @@ package com.example.avaliacao1;
 
 public class Familia extends Ingresso{
 
-    private Integer qtdPessoas;
+    private Integer qtdPessoas, desconto;
 
-    public Familia(String nomefilme, Double valor, Integer sala, Integer qtdPessoas) {
-        super(nomefilme, valor, sala);
+    public Familia(String nomeFilme, Double valor, Integer sala, Integer qtdPessoas, Integer desconto) {
+        super(nomeFilme, valor, sala);
         this.qtdPessoas = qtdPessoas;
+        this.desconto = desconto;
     }
 
     @Override
     public Double calcularValor() {
-        return getValor() * qtdPessoas * 0.8;
+        return getValor() * qtdPessoas * ((100-desconto)*0.01);
     }
 
-    public Double getQtdPessoas() {
-        return calcularValor();
+    public Integer getQtdPessoas() {
+        return qtdPessoas;
     }
 
 
+    public Integer getDesconto() {
+        return desconto;
+    }
 
     @Override
     public String toString() {
-        return "Familia{" + super.toString() +
-                "qtdPessoas=" + qtdPessoas +
-                "Valor total: " + calcularValor();
+        return "*Familia*" + super.toString() +
+                " | Número de pessoas: " + qtdPessoas +
+                " | Desconto: "+desconto+"%"+
+                " | Valor final: R$" + calcularValor() + ";";
     }
 }
