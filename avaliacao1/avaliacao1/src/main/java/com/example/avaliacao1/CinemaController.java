@@ -12,11 +12,6 @@ import java.util.stream.Collectors;
 @RequestMapping("/cinemas")
 public class CinemaController {
 
-    private Double total=0.0;
-    private Integer inteira=0;
-    private Integer meia=0;
-    private Integer familia=0;
-
     List<Ingresso> lista = new ArrayList<>();
     List<Ingresso> lista2 = new ArrayList<>();
     List<Ingresso> lista3 = new ArrayList<>();
@@ -26,8 +21,6 @@ public class CinemaController {
     public ResponseEntity adicionarIngresso(@RequestBody Inteira newIngresso){
 
         lista.add(newIngresso);
-        total += newIngresso.calcularValor();
-        inteira++;
         return  ResponseEntity.status(201).build();
     }
 
@@ -35,8 +28,6 @@ public class CinemaController {
     public ResponseEntity adicionarIngresso(@RequestBody MeiaEntrada newIngressso){
 
         lista2.add(newIngressso);
-        total += newIngressso.calcularValor();
-        meia++;
         return  ResponseEntity.status(201).build();
     }
 
@@ -44,8 +35,6 @@ public class CinemaController {
     public ResponseEntity adicionarIngresso(@RequestBody Familia newIngressso){
 
         lista3.add(newIngressso);
-        total += newIngressso.calcularValor();
-        familia++;
         return  ResponseEntity.status(201).build();
     }
 
@@ -110,11 +99,17 @@ public class CinemaController {
             return ResponseEntity.notFound().build();
         }
     }
-
+    /*
     @GetMapping("/total")
     public String carrinho(){
-        return "O total é de: R$"+total;
-    }
 
+        return "\nIngressos" +
+                "\n\nInteira: "+ inteira+" ingresso(s)" +
+                "\nMeia Entrada: "+ meia+" ingresso(s)"+
+                "\nFamília: "+ familia+" ingresso(s)" +
+                "\n\nO total é de: R$"+total;
+
+    }
+    */
 
 }

@@ -52,7 +52,7 @@ public class TesteCinema {
 
             switch (codigo){
                 case 1:
-                    System.out.println("Digite o nome do filme.");
+                    System.out.println("Digite o nome do filme em cartaz.");
                     nomeFilme = leitor2.nextLine();
                     System.out.println("Digite o valor do ingresso.");
                     valor += leitor.nextDouble();
@@ -64,7 +64,7 @@ public class TesteCinema {
                     break;
 
                 case 2:
-                    System.out.println("Digite o nome do filme.");
+                    System.out.println("Digite o nome do filme em cartaz.");
                     nomeFilme = leitor2.nextLine();
                     System.out.println("Digite o valor inteiro do ingresso.");
                     valor = leitor.nextDouble();
@@ -76,7 +76,7 @@ public class TesteCinema {
                     break;
 
                 case 3:
-                    System.out.println("Digite o nome do filme.");
+                    System.out.println("Digite o nome do filme em cartaz.");
                     nomeFilme = leitor2.nextLine();
                     System.out.println("Digite o valor inteiro do ingresso.");
                     valor = leitor.nextDouble();
